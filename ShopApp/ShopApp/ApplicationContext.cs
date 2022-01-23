@@ -14,7 +14,6 @@ namespace ShopApp
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
         }
 
         public DbSet<Employee> Employees { get; set; }
@@ -22,6 +21,7 @@ namespace ShopApp
         public DbSet<Title> Titles { get; set; }
         public DbSet<EmployeeProject> EmployeeProjects { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,7 @@ namespace ShopApp
             modelBuilder.ApplyConfiguration(new TitleConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeProjectConfiguration());
             modelBuilder.ApplyConfiguration(new ProjectConfiguration());
+            modelBuilder.ApplyConfiguration(new ClientConfiguration());
         }
     }
 }
