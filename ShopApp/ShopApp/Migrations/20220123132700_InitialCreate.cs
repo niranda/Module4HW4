@@ -28,8 +28,9 @@ namespace ShopApp.Migrations
                     ProjectId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Budget = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    StartedName = table.Column<DateTime>(type: "datetime2", maxLength: 7, nullable: false)
+                    StartedDate = table.Column<DateTime>(type: "datetime2", maxLength: 7, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,19 +84,19 @@ namespace ShopApp.Migrations
                 name: "EmployeeProject",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                    EmployeeProjectId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Rate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     StartedDate = table.Column<DateTime>(type: "datetime2", maxLength: 7, nullable: false),
-                    EmployeeId1 = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
                     ProjectId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmployeeProject", x => x.EmployeeId);
+                    table.PrimaryKey("PK_EmployeeProject", x => x.EmployeeProjectId);
                     table.ForeignKey(
-                        name: "FK_EmployeeProject_Employee_EmployeeId1",
-                        column: x => x.EmployeeId1,
+                        name: "FK_EmployeeProject_Employee_EmployeeId",
+                        column: x => x.EmployeeId,
                         principalTable: "Employee",
                         principalColumn: "EmployeeId",
                         onDelete: ReferentialAction.Cascade);
@@ -118,9 +119,9 @@ namespace ShopApp.Migrations
                 column: "TitleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeProject_EmployeeId1",
+                name: "IX_EmployeeProject_EmployeeId",
                 table: "EmployeeProject",
-                column: "EmployeeId1");
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmployeeProject_ProjectId",

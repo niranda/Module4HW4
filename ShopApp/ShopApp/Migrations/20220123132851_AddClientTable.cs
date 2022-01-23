@@ -3,29 +3,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ShopApp.Migrations
 {
-    public partial class SecondCreate : Migration
+    public partial class AddClientTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "StartedName",
-                table: "Project",
-                newName: "StartedDate");
-
             migrationBuilder.AddColumn<int>(
                 name: "ClientId",
                 table: "Project",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Description",
-                table: "Project",
-                type: "nvarchar(150)",
-                maxLength: 150,
-                nullable: false,
-                defaultValue: string.Empty);
 
             migrationBuilder.CreateTable(
                 name: "Client",
@@ -86,15 +73,6 @@ namespace ShopApp.Migrations
             migrationBuilder.DropColumn(
                 name: "ClientId",
                 table: "Project");
-
-            migrationBuilder.DropColumn(
-                name: "Description",
-                table: "Project");
-
-            migrationBuilder.RenameColumn(
-                name: "StartedDate",
-                table: "Project",
-                newName: "StartedName");
         }
     }
 }

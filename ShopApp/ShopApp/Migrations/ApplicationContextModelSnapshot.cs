@@ -148,12 +148,11 @@ namespace ShopApp.Migrations
                     b.Property<int>("EmployeeProjectId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("EmployeeId")
+                        .HasColumnName("EmployeeProjectId")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("EmployeeId")
-                        .HasColumnType("int")
-                        .HasColumnName("EmployeeId1");
+                        .HasColumnType("int");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");

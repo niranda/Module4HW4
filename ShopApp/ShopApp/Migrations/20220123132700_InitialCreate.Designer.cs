@@ -10,7 +10,7 @@ using ShopApp;
 namespace ShopApp.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220123113808_InitialCreate")]
+    [Migration("20220123132700_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,12 +70,11 @@ namespace ShopApp.Migrations
                     b.Property<int>("EmployeeProjectId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("EmployeeId")
+                        .HasColumnName("EmployeeProjectId")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("EmployeeId")
-                        .HasColumnType("int")
-                        .HasColumnName("EmployeeId1");
+                        .HasColumnType("int");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
@@ -128,23 +127,24 @@ namespace ShopApp.Migrations
                     b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("ProjectId")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("Budget")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("Budget");
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("Name");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("StartedDate")
                         .HasMaxLength(7)
-                        .HasColumnType("datetime2")
-                        .HasColumnName("StartedName");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ProjectId");
 

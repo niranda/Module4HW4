@@ -10,8 +10,8 @@ using ShopApp;
 namespace ShopApp.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220123125632_SecondCreate")]
-    partial class SecondCreate
+    [Migration("20220123132851_AddClientTable")]
+    partial class AddClientTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -150,12 +150,11 @@ namespace ShopApp.Migrations
                     b.Property<int>("EmployeeProjectId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("EmployeeId")
+                        .HasColumnName("EmployeeProjectId")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("EmployeeId")
-                        .HasColumnType("int")
-                        .HasColumnName("EmployeeId1");
+                        .HasColumnType("int");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
